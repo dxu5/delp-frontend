@@ -10,7 +10,7 @@ function LandingPage() {
       <div className={styles["search-area"]}>
         <TopNav />
         <img src={logo} className={styles.logo} alt="delp logo" />
-        <SearchBar />
+        <SearchBar small={false} />
         <SearchSuggestions />
       </div>
     </div>

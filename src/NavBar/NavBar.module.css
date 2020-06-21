@@ -1,0 +1,15 @@
+.logo {
+  width: 75px;
+  margin-right: 1rem;
+}
+.navbar {
+  display: flex;
+  background: #d32323;
+  padding: 1rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.button).navbutton {
+  margin-left: 1rem;
+}

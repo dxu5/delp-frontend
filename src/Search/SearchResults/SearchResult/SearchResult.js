@@ -2,25 +2,39 @@ import React from "react";
 import styles from "./SearchResult.module.css";
 import BusinessRating from "../../../BusinessRating/BusinessRating";
 
-function SearchResult() {
+function SearchResult(props) {
+  if (!props.business) {
+    return <div></div>;
+  }
+  const b = props.business;
+  const tags = b.categories.map((category) => (
+    <span
+      className={`tag ${styles["business-tag"]}`}
+      key={b.id + category.title}
+    >
+      {category.title}{" "}
+    </span>
+  ));
   return (
     <div className={styles["search-result"]}>
       <img
-        src="https://via.placeholder.com/210"
+        src={b.image_url}
         alt="business"
         className={styles["business-image"]}
       />
       <div className={styles["business-info"]}>
-        <h2 className="subtitle">Burger Place</h2>
-        <BusinessRating />
+        <h2 className="subtitle">{b.name}</h2>
+        <BusinessRating reviewCount={b.review_count} rating={b.rating} />
         <p>
-          $$ <span class="tag">Burgers</span> <span class="tag">Fast Food</span>
+          {b.price} {tags}
         </p>
       </div>
       <div className={styles["contact-info"]}>
-        <p>+49 1234567</p>
-        <p>Example Street 5</p>
-        <p>12345 Berlin</p>
+        <p>{b.phone}</p>
+        <p>{b.location.address1}</p>
+        <p>
+          {b.location.city} {b.location.state}, {b.location.zip_code}
+        </p>
       </div>
     </div>
   );
